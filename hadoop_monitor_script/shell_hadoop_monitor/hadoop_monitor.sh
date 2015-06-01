@@ -53,6 +53,12 @@ function chkMasterNode(){
 
 function chkChildNode(){
     if [ `ssh $1 $jps | grep 'NodeManager'|wc -l` -lt 1 ];then
+      if [ `ssh $1 $jps | grep 'process information unavailable'|wc -l` -eq 1 ];then
+         unavailProcess=`ssh $1 $jps | grep 'process information unavailable'| awk '{print $1}'`
+         echo "unavailProcess:"$unavailProcess
+         logWriter $1 procinfounavail
+         ssh $1 /bin/kill -9 $unavailProcess
+      fi
       ssh $1 $hadoopPath/yarn-daemon.sh start nodemanager
       crackHandler $1 nodemanager
     fi
