@@ -108,3 +108,7 @@ isOk getRecommendAnalyisResultTable
 
 sqoopIntoMysql $sqoopHost
 isOk sqoopIntoMysql
+
+echo "************************** running $0 END in $(date +%Y/%m/%d/%H:%M:%S) **************************"
+
+
