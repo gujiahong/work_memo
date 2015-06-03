@@ -1,5 +1,5 @@
 #!/bin/bash
-# turner koo
+# author turner koo 2015/05/21
 
 echo "************************** running $0 START in $(date +%Y/%m/%d/%H:%M:%S) **************************"
 
